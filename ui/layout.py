@@ -53,8 +53,7 @@ with gr.Blocks(title="Agente de Carreira | Guilherme Ferreira") as demo:
             
             """)
             
-            # Botão de Link (Opcional)
-            gr.Button("🔗 Ver meu LinkedIn", link="https://www.linkedin.com/in/guilherme-ferreira-971b46382")
+            
 
         # --- COLUNA DA DIREITA (CHAT PRINCIPAL) ---
         # scale=4 significa que ela ocupa 4 partes da tela (maior)
