@@ -1,18 +1,3 @@
-
-
-````markdown
----
-title: Agente de Carreira | Guilherme Ferreira
-emoji: 🤖
-colorFrom: blue
-colorTo: gray
-sdk: gradio
-sdk_version: 6.0.1
-app_file: app.py
-pinned: false
-license: mit
----
-
 # 🤖 Agente de Carreira | Guilherme Ferreira
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python&logoColor=white)
@@ -60,7 +45,6 @@ projeto/
 ├── ui/              # Camada visual (Gradio Layout & CSS)
 ├── app.py           # Ponto de entrada da aplicação
 └── requirements.txt # Dependências
-````
 
 -----
 
