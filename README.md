@@ -1,60 +1,139 @@
 
-# 🤖 AI Career Agent | Guilherme Ferreira
+# 🤖 Agente de Carreira | Guilherme Ferreira
 
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
-![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o-green)
-![Gradio](https://img.shields.io/badge/Frontend-Gradio-orange)
+![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-API-green?style=for-the-badge&logo=openai&logoColor=white)
+![Gradio](https://img.shields.io/badge/Frontend-Gradio-orange?style=for-the-badge&logo=gradio&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Production-success?style=for-the-badge)
 
-> **"Show, don't tell."**
-> Este projeto é um Agente de IA autônomo projetado para atuar como minha primeira camada de contato com recrutadores. Ele substitui o currículo estático por uma experiência conversacional interativa.
+> **"First Principles over Frameworks."**
 
----
+Este projeto é um **Agente de IA Autônomo** projetado para atuar como meu representante profissional inicial. Ele conversa com recrutadores, tira dúvidas sobre minha trajetória e captura oportunidades de contato (Leads) em tempo real.
 
-## 🚀 Teste Agora (Live Demo)
-Converse com meu agente em tempo real no Hugging Face Spaces:
-👉 **[Clique aqui para acessar o Agente] https://huggingface.co/spaces/gui97/agente_de_carreira-gui_ferreira**
+🔗 **[Acesse o Agente Online no Hugging Face](https://huggingface.co/spaces/gui97/agente-guilherme-ferreira)** 
 
 ---
 
-## 💡 Sobre o Projeto
-Sou um profissional em transição de carreira (Indústria -> Engenharia de IA). Criei este projeto para aplicar na prática os conceitos que estudei nos cursos de **Agentic AI** e **Python** da DeepLearning.AI (Andrew Ng).
+## 🎯 Objetivo do Projeto
 
-O objetivo do agente é:
-1.  Responder perguntas sobre minha trajetória e habilidades 24/7.
-2.  Filtrar oportunidades alinhadas com meu perfil (Cultura e Tech Stack).
-3.  Demonstrar domínio sobre integração de LLMs e Engenharia de Prompt.
+Diferente da maioria dos chatbots que utilizam frameworks de alto nível (como LangChain ou CrewAI), este agente foi construído em **Python Puro (Vanilla Python)**.
 
-## 🛠️ Stack Tecnológica
-O projeto foi construído com foco em **simplicidade** e **eficiência** (Clean Code), sem o uso excessivo de frameworks complexos para demonstrar entendimento dos fundamentos.
-
-* **Linguagem:** Python puro.
-* **Cérebro (LLM):** OpenAI GPT-4o-mini (via API).
-* **Arquitetura:** RAG Estático (Context Injection via System Prompt).
-* **Interface:** Gradio (Web Chat UI).
-* **Deploy:** Hugging Face Spaces (Cloud).
-
-## 📂 Estrutura do Projeto
-* `app.py`: Lógica principal, configuração do cliente OpenAI e interface Gradio.
-* `dados.py`: A "Base de Conhecimento" do agente. Contém meu perfil, skills e regras de negócio estruturadas.
-* `requirements.txt`: Dependências necessárias para o deploy.
-
-## 🧠 Desafios & Aprendizados
-Durante o desenvolvimento, foquei em resolver problemas reais de IA:
-* **Controle de Alucinação:** Implementação de um *System Prompt* robusto para impedir que o agente invente habilidades que não possuo.
-* **Design de Persona:** Ajuste do tom de voz para ser profissional, mas refletir minha realidade de autodidata.
-* **Segurança:** Gerenciamento de chaves de API usando variáveis de ambiente (`dotenv` e Secrets).
-
-## 📚 Certificações Aplicadas
-Este projeto materializa o conhecimento adquirido em:
-* *Agentic AI* (DeepLearning.AI / Andrew Ng)
-* *AI Python for Beginners* (DeepLearning.AI)
-* *Engenharia de Prompts* (Udemy)
+**Por quê?**
+Como desenvolvedor em transição de carreira, meu objetivo foi demonstrar domínio sobre os fundamentos da Engenharia de IA:
+1.  **Controle de Estado:** Gerenciamento manual do histórico de mensagens e contexto.
+2.  **Function Calling (Tool Use):** Implementação da lógica de decisão e execução de ferramentas "na mão".
+3.  **Loop de Agente (ReAct):** Construção da arquitetura de raciocínio (Thought -> Action -> Observation) sem abstrações.
 
 ---
 
-### 📫 Contato
-* **LinkedIn:** [Guilherme Ferreira](https://www.linkedin.com/in/guilherme-ferreira-971b46382/)
-* **Email:** www.guiferreira70@gmail.com
+## ⚙️ Arquitetura e Stack
+
+O projeto segue uma arquitetura modular para facilitar manutenção e escalabilidade.
+
+* **Core:** Python 3.x
+* **LLM:** OpenAI GPT-4o-mini (Custo-eficiente e rápido).
+* **Interface:** Gradio (Blocks & ChatInterface).
+* **Notificações:** Pushover API (Notifica meu celular instantaneamente quando um recrutador deixa contato, ou quando faz uma pergunta que o agente não tem aresposta).
+* **Deploy:** Hugging Face Spaces.
+
+### Estrutura de Pastas
+```text
+projeto/
+├── config/          # Gerenciamento de chaves e variáveis de ambiente
+├── core/            # Cérebro do agente (Loop principal e Prompts)
+├── data/            # Base de conhecimento (Perfil Profissional)
+├── tools/           # Ferramentas (Funções Python + JSON Schemas)
+├── ui/              # Camada visual (Gradio Layout & CSS)
+├── app.py           # Ponto de entrada da aplicação
+└── requirements.txt # Dependências
+
+## 🛠️ Funcionalidades (Tools)
+
+O agente possui acesso a ferramentas que ele decide usar autonomamente:
+
+1. `record_user_details`:
+    
+    - **Gatilho:** Quando um recrutador demonstra interesse ou oferece uma vaga.
+        
+    - **Ação:** Captura Nome, Email e Notas, salva o lead e envia uma notificação Push para o meu celular.
+        
+2. `record_unknown_question`:
+    
+    - **Gatilho:** Quando o usuário faz uma pergunta que não consta na base de conhecimento.
+        
+    - **Ação:** Registra a dúvida para que eu possa responder pessoalmente depois.
+        
 
 ---
-*Desenvolvido  por Guilherme Ferreira.*
+
+## 🚀 Como Rodar Localmente
+
+Siga os passos abaixo para clonar e executar o agente na sua máquina.
+
+### 1. Clone o repositório
+
+Bash
+
+```
+git clone [git clone https://huggingface.co/spaces/gui97/agente-guilherme-ferreira]
+cd agente-guilherme-ferreira
+```
+
+### 2. Crie um ambiente virtual
+
+Bash
+
+```
+python -m venv .venv
+# Windows:
+.venv\Scripts\activate
+# Linux/Mac:
+source .venv/bin/activate
+```
+
+### 3. Instale as dependências
+
+Bash
+
+```
+pip install -r requirements.txt
+```
+
+### 4. Configure as Variáveis de Ambiente
+
+Crie um arquivo `.env` na raiz do projeto e adicione suas chaves:
+
+Snippet de código
+
+```
+OPENAI_API_KEY=sk-proj-sua-chave-aqui
+PUSHOVER_USER=sua-user-key
+PUSHOVER_TOKEN=seu-app-token
+```
+
+### 5. Execute
+
+Bash
+
+```
+python app.py
+```
+
+O projeto estará rodando em `http://localhost:7860`.
+
+---
+
+## 👤 Sobre o Autor
+
+**Guilherme Ferreira** _Desenvolvedor em Transição (Indústria -> Tech)_
+
+Trago a disciplina e resiliência de 3+ anos na indústria para o mundo do desenvolvimento de software. Focado em Python, Automação e IA Agêntica.
+
+- **LinkedIn:** [linkedin.com/in/seu-perfil](https://www.linkedin.com/in/guilherme-ferreira-971b46382)
+    
+- **GitHub:** [github.com/guimaster97](https://www.google.com/search?q=https://github.com/guimaster97)
+- **Email:** www.guiferreira70@gmail.com  
+
+---
+
+_Este projeto é Open Source sob a licença MIT._
