@@ -45,9 +45,8 @@ projeto/
 ├── ui/              # Camada visual (Gradio Layout & CSS)
 ├── app.py           # Ponto de entrada da aplicação
 └── requirements.txt # Dependências
-
------
-
+```
+---------
 ## 🛠️ Funcionalidades (Tools)
 
 O agente possui acesso a ferramentas que ele decide usar autonomamente:
