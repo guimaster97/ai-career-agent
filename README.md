@@ -111,7 +111,7 @@ Trago a disciplina e resiliência de 3+ anos na indústria para o mundo do desen
 
   * 🔗 **LinkedIn:** [linkedin.com/in/guilherme-ferreira](https://www.linkedin.com/in/guilherme-ferreira-971b46382)
   * 🐙 **GitHub:** [github.com/guimaster97](https://github.com/guimaster97)
-  * 📧 **Email:** [guiferreira70@gmail.com]
+  * 📧 **Email:** [guiferreira70@gmail.com](guiferreira70@gmail.com)
 
 -----
 
